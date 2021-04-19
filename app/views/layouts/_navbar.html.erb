@@ -1,0 +1,62 @@
+<header id="topnav" class="defaultscroll sticky bg-light">
+    <div class="container">
+        <div class="logo">
+            <%= link_to root_path do %>
+                <%= image_tag "logo-dark.png", class: "logo-light-mode", height: "24"%>
+                <%= image_tag "logo-light.png", class: "logo-dark-mode", height: "24"%>
+            <% end %>
+        </div>
+        <ul class="buy-button list-inline mb-0">
+            <li class="list-inline-item mb-0">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-link text-decoration-none dropdown-toggle p-0 pe-2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="bi bi-search"></i>
+                    </button>
+                    <div class="dropdown-menu dd-menu dropdown-menu-end bg-white shadow rounded border-0 mt-3 py-0" style="width: 300px;">
+                        
+                        <%= form_tag(root_path, method: :get) do %>
+                            <%= text_field_tag :search, params[:term], class:"form-control border bg-white", placeholder:"Search..." %>
+                        <% end %>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="menu-extras">
+            <div class="menu-item">
+                <a class="navbar-toggle" id="isToggle" onclick="toggleMenu()">
+                    <div class="lines">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div id="navigation">
+            <ul class="navigation-menu nav-right">
+                <li><%= link_to "Home", root_path, class: "sub-menu-item"%></li>
+                <li><%= link_to "About Us", about_us_path, class: "sub-menu-item"%></li>
+                <% if user_signed_in? %>
+                    <li><%= link_to "Dashboard", posts_path, class: "nav-link"%></li>
+                <% else %>
+                    <li><%= link_to "LOGIN", new_user_session_path, class: "nav-link"%></li>
+                 <% end %>
+            </ul>
+            <ul class="buy-menu-btn d-none">
+                <li class="list-inline-item mb-0">
+                    <div class="dropdown">
+                        <button type="button" class="btn btn-link text-decoration-none dropdown-toggle p-0 pe-2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="bi bi-search"></i>
+                        </button>
+                        <div class="dropdown-menu dd-menu dropdown-menu-end bg-white shadow rounded border-0 mt-3 py-0" style="width: 240px;">
+                           <%= form_tag(root_path, method: :get) do %>
+                                <%= text_field_tag :search, params[:term], class:"form-control border bg-white", placeholder:"Search..." %>
+                            <% end %>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>

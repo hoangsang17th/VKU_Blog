@@ -1,0 +1,62 @@
+<section class="section mt-60">
+  <div class="container mt-lg-3">
+      <div class="row">
+          <div class="col-lg-4 col-md-6 col-12 d-lg-block d-none">
+              <div class="sidebar sticky-bar p-4 rounded bg-light">
+                  
+                  <div class="widget">
+                      <ul class="list-unstyled sidebar-nav mb-0" id="navmenu-nav">
+                          
+                          <li class="navbar-item account-menu px-0 mt-2">
+                              <%= link_to 'Posts', posts_path, class:"navbar-link d-flex rounded shadow align-items-center py-3 px-4" %>
+                          </li>
+                          <li class="navbar-item account-menu px-0 mt-2">
+                            <%= link_to 'New Post', new_post_path, class:"navbar-link d-flex rounded shadow align-items-center py-3 px-4" %>
+                          </li>
+                          <li class="navbar-item account-menu px-0 mt-2">
+                              <%= link_to 'Users', users_path, class:"navbar-link d-flex rounded shadow align-items-center py-3 px-4" %>
+                          </li>
+                          <li class="navbar-item account-menu px-0 mt-2">
+                              <%= link_to 'Profile', edit_user_registration_path, class:"navbar-link d-flex rounded shadow align-items-center py-3 px-4" %>
+                          </li>
+                          <li class="navbar-item account-menu px-0 mt-2">
+                              <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class:"navbar-link d-flex rounded shadow align-items-center py-3 px-4" %>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+
+          <div class="col-lg-8 col-12">
+              <div class="card border-0 rounded shadow">
+                  <div class="card-body">
+                      <h5 class="text-md-start text-center">Posts: </h5>
+                      <p id="notice"><%= notice %></p>
+                      <table id="tablesearch" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th class="text-right">More</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <% @posts.each do |post| %>
+                          <tr>
+                            <td><%= post.id %></td>
+                            <td><%= truncate(post.Title, length: 70) %></td>
+                            <td class="text-right">
+                              <%= link_to '', post ,class:"bi bi-eye"%>
+                              <%= link_to '', edit_post_path(post),class:"bi bi-pen"%>
+                              <%= link_to '', post, method: :delete, data: { confirm: 'Are you sure?' }, class:"bi bi-trash" %>
+                            </td>
+                          </tr>
+                        <% end %>
+                        </tbody>
+                    </table>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>

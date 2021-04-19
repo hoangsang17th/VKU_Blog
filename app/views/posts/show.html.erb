@@ -1,0 +1,19 @@
+<%# <%= link_to 'Edit', edit_post_path(@post) %> |
+<%# <%= link_to 'Back', posts_path %> 
+<section class="bg-half">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
+                <div class="section-title">
+                    <div class="text-center">
+                        <h1 class=" mb-5 pb-2 h1"><%= @post.Title %></h1>
+                        <p id="notice"><%= notice %></p>
+                    </div>
+                    <p class="text-muted mb-0 mt-4"><%= simple_format(@post.Content)%></p>
+                    <div class="tag text-sencondary mt-5">Tag: <%= @post.Tag %></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
